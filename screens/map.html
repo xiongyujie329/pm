@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>路线规划 - 旅行路线规划</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        #map {
+            height: calc(100vh - 180px);
+            width: 100%;
+            z-index: 1;
+        }
+        .route-panel {
+            z-index: 2;
+        }
+        .location-item {
+            background: white;
+            margin-bottom: 1px;
+            transition: all 0.3s;
+        }
+        .location-item:active {
+            background: #f3f4f6;
+        }
+        .handle {
+            cursor: move;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 顶部搜索栏 -->
+    <div class="px-4 py-3 bg-white shadow-sm">
+        <div class="relative">
+            <input type="search" placeholder="搜索目的地、景点" class="w-full px-10 py-2 bg-gray-100 rounded-full text-sm">
+            <i class="fas fa-search absolute left-4 top-3 text-gray-400"></i>
+            <button class="absolute right-3 top-2 bg-blue-500 text-white px-3 py-1 rounded-full text-sm">
+                <i class="fas fa-camera mr-1"></i>识别
+            </button>
+        </div>
+    </div>
+
+    <!-- 地图区域 -->
+    <div id="map"></div>
+
+    <!-- 路线面板 -->
+    <div class="route-panel fixed bottom-0 left-0 right-0 bg-white rounded-t-2xl shadow-lg">
+        <div class="flex justify-between items-center px-4 py-3 border-b">
+            <div class="flex items-center">
+                <h3 class="font-medium">路线规划</h3>
+                <span class="ml-2 text-sm text-gray-500">共3个景点</span>
+            </div>
+            <button class="text-blue-500 text-sm">
+                <i class="fas fa-plus-circle mr-1"></i>添加景点
+            </button>
+        </div>
+        <div class="px-4 py-2 max-h-48 overflow-y-auto">
+            <!-- 起点 -->
+            <div class="location-item flex items-center p-3">
+                <i class="fas fa-grip-vertical text-gray-300 mr-3 handle"></i>
+                <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center mr-3">
+                    <i class="fas fa-map-marker-alt text-green-500"></i>
+                </div>
+                <div class="flex-1">
+                    <div class="font-medium">北京南站</div>
+                    <div class="text-xs text-gray-500">起点</div>
+                </div>
+                <div class="flex items-center">
+                    <input type="time" class="text-sm text-gray-500 border rounded px-2 py-1" value="09:00">
+                    <button class="ml-3 text-gray-400">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- 景点1 -->
+            <div class="location-item flex items-center p-3">
+                <i class="fas fa-grip-vertical text-gray-300 mr-3 handle"></i>
+                <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                    <span class="text-blue-500 font-medium">1</span>
+                </div>
+                <div class="flex-1">
+                    <div class="font-medium">故宫博物院</div>
+                    <div class="text-xs text-gray-500">建议游玩：2小时</div>
+                </div>
+                <div class="flex items-center">
+                    <input type="time" class="text-sm text-gray-500 border rounded px-2 py-1" value="10:00">
+                    <button class="ml-3 text-gray-400">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 景点2 -->
+            <div class="location-item flex items-center p-3">
+                <i class="fas fa-grip-vertical text-gray-300 mr-3 handle"></i>
+                <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                    <span class="text-blue-500 font-medium">2</span>
+                </div>
+                <div class="flex-1">
+                    <div class="font-medium">天安门广场</div>
+                    <div class="text-xs text-gray-500">建议游玩：1小时</div>
+                </div>
+                <div class="flex items-center">
+                    <input type="time" class="text-sm text-gray-500 border rounded px-2 py-1" value="13:00">
+                    <button class="ml-3 text-gray-400">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="px-4 py-3 border-t">
+            <button onclick="generateRoute()" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-3 rounded-lg text-sm">
+                <i class="fas fa-paper-plane mr-2"></i>生成行程
+            </button>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-6 py-2">
+        <div class="flex justify-between items-center">
+            <a href="home.html" target="_parent" class="flex flex-col items-center">
+                <i class="fas fa-home text-gray-400 text-xl"></i>
+                <span class="text-xs mt-1 text-gray-400">首页</span>
+            </a>
+            <a href="map.html" target="_parent" class="flex flex-col items-center">
+                <i class="fas fa-map-marked-alt text-blue-500 text-xl"></i>
+                <span class="text-xs mt-1 text-blue-500">规划</span>
+            </a>
+            <a href="routes.html" target="_parent" class="flex flex-col items-center">
+                <i class="fas fa-route text-gray-400 text-xl"></i>
+                <span class="text-xs mt-1 text-gray-400">路线</span>
+            </a>
+            <a href="profile.html" target="_parent" class="flex flex-col items-center">
+                <i class="fas fa-user text-gray-400 text-xl"></i>
+                <span class="text-xs mt-1 text-gray-400">我的</span>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // 初始化地图
+        var map = L.map('map').setView([39.9042, 116.4074], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // 添加标记点
+        var markers = [
+            {
+                position: [39.9087, 116.3975],
+                title: '北京南站',
+                icon: 'map-marker-alt',
+                color: 'green'
+            },
+            {
+                position: [39.9163, 116.3972],
+                title: '故宫博物院',
+                number: '1',
+                color: 'blue'
+            },
+            {
+                position: [39.9054, 116.3976],
+                title: '天安门广场',
+                number: '2',
+                color: 'blue'
+            }
+        ];
+
+        markers.forEach(marker => {
+            let icon;
+            if (marker.icon) {
+                icon = L.divIcon({
+                    html: `<div class="w-8 h-8 rounded-full bg-${marker.color}-100 flex items-center justify-center">
+                            <i class="fas fa-${marker.icon} text-${marker.color}-500"></i>
+                          </div>`,
+                    className: 'custom-div-icon'
+                });
+            } else {
+                icon = L.divIcon({
+                    html: `<div class="w-8 h-8 rounded-full bg-${marker.color}-100 flex items-center justify-center">
+                            <span class="text-${marker.color}-500 font-medium">${marker.number}</span>
+                          </div>`,
+                    className: 'custom-div-icon'
+                });
+            }
+
+            L.marker(marker.position, { icon: icon })
+                .bindPopup(marker.title)
+                .addTo(map);
+        });
+
+        // 绘制路线
+        var latlngs = markers.map(marker => marker.position);
+        var polyline = L.polyline(latlngs, {color: 'blue', weight: 3}).addTo(map);
+
+        function generateRoute() {
+            // 在实际应用中，这里会收集路线数据并传递给结果页
+            // 对于原型，我们直接更新父窗口中特定iframe的src
+            const parentDocument = window.parent.document;
+            const routeResultFrame = parentDocument.getElementById('routeResultFrame');
+            if (routeResultFrame) {
+                routeResultFrame.src = 'route_result.html';
+            } else {
+                console.error('Could not find routeResultFrame in parent document.');
+                // Fallback or error handling, e.g., navigate the whole page if iframe not found
+                // window.parent.location.href = 'route_result.html'; 
+            }
+        }
+    </script>
+</body>
+</html> 

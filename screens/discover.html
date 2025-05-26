@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>发现 - 旅行路线规划</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <!-- 顶部标题栏 -->
+    <div class="px-4 py-4 bg-white shadow-sm">
+        <div class="flex justify-between items-center">
+            <h1 class="text-lg font-medium">发现精彩</h1>
+            <button class="text-gray-400">
+                <i class="fas fa-bell"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- 搜索栏 -->
+    <div class="px-4 py-3 bg-white border-b">
+        <div class="relative">
+            <input type="search" placeholder="搜索目的地、攻略、用户" class="w-full px-10 py-2 bg-gray-100 rounded-full text-sm">
+            <i class="fas fa-search absolute left-4 top-3 text-gray-400"></i>
+        </div>
+    </div>
+
+    <!-- 内容区域 -->
+    <div class="pb-20">
+        <!-- 热门目的地 -->
+        <div class="px-4 py-4 bg-white">
+            <h2 class="text-lg font-medium mb-4">热门目的地</h2>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="relative rounded-xl overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&q=80&w=400" alt="北京" class="w-full h-32 object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/70 to-transparent">
+                        <h3 class="text-white font-medium">北京</h3>
+                        <p class="text-white/80 text-xs">故宫、长城、胡同</p>
+                    </div>
+                </div>
+                <div class="relative rounded-xl overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1495562569060-2eec283d3391?auto=format&fit=crop&q=80&w=400" alt="杭州" class="w-full h-32 object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/70 to-transparent">
+                        <h3 class="text-white font-medium">杭州</h3>
+                        <p class="text-white/80 text-xs">西湖、灵隐寺、西溪湿地</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 精选攻略 -->
+        <div class="mt-2 bg-white px-4 py-4">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-medium">精选攻略</h2>
+                <a href="#" class="text-sm text-gray-500">更多</a>
+            </div>
+            <div class="space-y-4">
+                <!-- 攻略卡片1 -->
+                <div class="flex space-x-3">
+                    <div class="flex-none">
+                        <img src="https://images.unsplash.com/photo-1505993597083-3bd19fb75e57?auto=format&fit=crop&q=80&w=200" alt="长城攻略" class="w-24 h-24 rounded-lg object-cover">
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-medium mb-1">长城一日游完全攻略</h3>
+                        <p class="text-sm text-gray-500 line-clamp-2">详细介绍八达岭长城的最佳游玩路线、交通方式和注意事项...</p>
+                        <div class="flex items-center mt-2">
+                            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=30" alt="作者头像" class="w-5 h-5 rounded-full">
+                            <span class="text-xs text-gray-500 ml-2">旅行达人</span>
+                            <div class="flex items-center ml-auto">
+                                <i class="fas fa-heart text-red-500 text-xs"></i>
+                                <span class="text-xs text-gray-500 ml-1">2.3k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 攻略卡片2 -->
+                <div class="flex space-x-3">
+                    <div class="flex-none">
+                        <img src="https://images.unsplash.com/photo-1470004914212-05527e49370b?auto=format&fit=crop&q=80&w=200" alt="拍照攻略" class="w-24 h-24 rounded-lg object-cover">
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-medium mb-1">旅行摄影技巧分享</h3>
+                        <p class="text-sm text-gray-500 line-clamp-2">分享如何在旅行中拍出完美的照片，包括构图技巧和后期处理...</p>
+                        <div class="flex items-center mt-2">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=30" alt="作者头像" class="w-5 h-5 rounded-full">
+                            <span class="text-xs text-gray-500 ml-2">摄影师小王</span>
+                            <div class="flex items-center ml-auto">
+                                <i class="fas fa-heart text-red-500 text-xs"></i>
+                                <span class="text-xs text-gray-500 ml-1">1.8k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 热门话题 -->
+        <div class="mt-2 bg-white px-4 py-4">
+            <h2 class="text-lg font-medium mb-4">热门话题</h2>
+            <div class="grid grid-cols-2 gap-3">
+                <div class="bg-gray-50 p-3 rounded-xl">
+                    <div class="flex items-center space-x-2 mb-2">
+                        <i class="fas fa-fire text-orange-500"></i>
+                        <span class="font-medium">#最美日落地点#</span>
+                    </div>
+                    <p class="text-sm text-gray-500">1.2万人参与讨论</p>
+                </div>
+                <div class="bg-gray-50 p-3 rounded-xl">
+                    <div class="flex items-center space-x-2 mb-2">
+                        <i class="fas fa-fire text-orange-500"></i>
+                        <span class="font-medium">#周末短途游#</span>
+                    </div>
+                    <p class="text-sm text-gray-500">8.5千人参与讨论</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-6 py-2">
+        <div class="flex justify-between items-center">
+            <a href="home.html" target="_parent" class="flex flex-col items-center">
+                <i class="fas fa-home text-gray-400 text-xl"></i>
+                <span class="text-xs mt-1 text-gray-400">首页</span>
+            </a>
+            <a href="map.html" target="_parent" class="flex flex-col items-center">
+                <i class="fas fa-map-marked-alt text-gray-400 text-xl"></i>
+                <span class="text-xs mt-1 text-gray-400">规划</span>
+            </a>
+            <a href="routes.html" target="_parent" class="flex flex-col items-center">
+                <i class="fas fa-route text-gray-400 text-xl"></i>
+                <span class="text-xs mt-1 text-gray-400">路线</span>
+            </a>
+            <a href="profile.html" target="_parent" class="flex flex-col items-center">
+                <i class="fas fa-user text-gray-400 text-xl"></i>
+                <span class="text-xs mt-1 text-gray-400">我的</span>
+            </a>
+        </div>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页 - 旅行路线规划</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <!-- 主内容区 -->
+    <div class="h-full pb-20">
+        <!-- 顶部搜索栏 -->
+        <div class="px-4 py-3 bg-white shadow-sm">
+            <div class="relative">
+                <input type="search" placeholder="搜索目的地、景点、路线" class="w-full px-10 py-2 bg-gray-100 rounded-full text-sm">
+                <i class="fas fa-search absolute left-4 top-3 text-gray-400"></i>
+            </div>
+        </div>
+
+        <!-- 快捷功能区 -->
+        <div class="grid grid-cols-4 gap-4 px-4 py-6 bg-white">
+            <div class="flex flex-col items-center">
+                <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-1">
+                    <i class="fas fa-map-marked-alt text-blue-500 text-xl"></i>
+                </div>
+                <span class="text-xs">路线规划</span>
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mb-1">
+                    <i class="fas fa-camera text-green-500 text-xl"></i>
+                </div>
+                <span class="text-xs">文字识别</span>
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="w-14 h-14 bg-purple-100 rounded-full flex items-center justify-center mb-1">
+                    <i class="fas fa-heart text-purple-500 text-xl"></i>
+                </div>
+                <span class="text-xs">收藏夹</span>
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="w-14 h-14 bg-orange-100 rounded-full flex items-center justify-center mb-1">
+                    <i class="fas fa-compass text-orange-500 text-xl"></i>
+                </div>
+                <span class="text-xs">发现</span>
+            </div>
+        </div>
+
+        <!-- 推荐路线 -->
+        <div class="mt-2 px-4 py-4 bg-white">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-semibold">热门路线</h2>
+                <a href="#" class="text-sm text-gray-500">查看更多</a>
+            </div>
+            <div class="space-y-4">
+                <div class="bg-gray-50 rounded-xl p-3">
+                    <img src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&q=80&w=400" alt="故宫" class="w-full h-32 object-cover rounded-lg mb-3">
+                    <h3 class="font-medium mb-1">北京故宫 - 天安门 - 王府井一日游</h3>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="fas fa-clock mr-1"></i>
+                        <span>建议游玩：1天</span>
+                        <i class="fas fa-user ml-4 mr-1"></i>
+                        <span>2.3万人已打卡</span>
+                    </div>
+                </div>
+                <div class="bg-gray-50 rounded-xl p-3">
+                    <img src="https://images.unsplash.com/photo-1495562569060-2eec283d3391?auto=format&fit=crop&q=80&w=400" alt="西湖" class="w-full h-32 object-cover rounded-lg mb-3">
+                    <h3 class="font-medium mb-1">杭州西湖精华景点半日游</h3>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="fas fa-clock mr-1"></i>
+                        <span>建议游玩：4小时</span>
+                        <i class="fas fa-user ml-4 mr-1"></i>
+                        <span>1.8万人已打卡</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-6 py-2">
+        <div class="flex justify-between items-center">
+            <a href="home.html" target="_parent" class="flex flex-col items-center">
+                <i class="fas fa-home text-blue-500 text-xl"></i>
+                <span class="text-xs mt-1 text-blue-500">首页</span>
+            </a>
+            <a href="map.html" target="_parent" class="flex flex-col items-center">
+                <i class="fas fa-map-marked-alt text-gray-400 text-xl"></i>
+                <span class="text-xs mt-1 text-gray-400">规划</span>
+            </a>
+            <a href="routes.html" target="_parent" class="flex flex-col items-center">
+                <i class="fas fa-route text-gray-400 text-xl"></i>
+                <span class="text-xs mt-1 text-gray-400">路线</span>
+            </a>
+            <a href="profile.html" target="_parent" class="flex flex-col items-center">
+                <i class="fas fa-user text-gray-400 text-xl"></i>
+                <span class="text-xs mt-1 text-gray-400">我的</span>
+            </a>
+        </div>
+    </div>
+</body>
+</html> 

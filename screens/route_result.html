@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>行程概览 - 旅行路线规划</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            background-color: #f9fafb; /* Standard background for consistency */
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .scrollable-content {
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- 顶部导航 -->
+    <div class="px-4 py-4 bg-white shadow-sm flex items-center sticky top-0 z-10 flex-shrink-0">
+        <button onclick="navigateParentToIndex()" class="text-blue-500 mr-4">
+            <i class="fas fa-arrow-left text-lg"></i>
+        </button>
+        <h1 class="text-lg font-medium text-center flex-1">行程概览</h1>
+        <button class="text-blue-500 opacity-50 cursor-not-allowed"> <!-- Share button, non-functional for now -->
+            <i class="fas fa-share-alt text-lg"></i>
+        </button>
+    </div>
+
+    <!-- 行程信息 (Scrollable Area) -->
+    <div class="scrollable-content p-4">
+        <div class="bg-white rounded-xl shadow-md overflow-hidden mb-4">
+            <img src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&q=80&w=400" alt="行程封面" class="w-full h-48 object-cover">
+            <div class="p-4">
+                <h2 class="text-xl font-semibold mb-2">北京经典三日游</h2>
+                <p class="text-gray-600 text-sm mb-3">探索古都的魅力：故宫、长城、颐和园、天坛...</p>
+                <div class="flex justify-between items-center text-sm text-gray-500 mb-3">
+                    <span><i class="fas fa-calendar-alt mr-1"></i> 3天</span>
+                    <span><i class="fas fa-map-marker-alt mr-1"></i> 5个景点</span>
+                    <span><i class="fas fa-users mr-1"></i> 适合2-4人</span>
+                </div>
+                <div class="flex items-center mb-3 flex-wrap">
+                    <span class="text-sm font-medium mr-2">标签:</span>
+                    <span class="bg-blue-100 text-blue-600 px-2 py-1 rounded-full text-xs mr-1 mb-1">历史文化</span>
+                    <span class="bg-green-100 text-green-600 px-2 py-1 rounded-full text-xs mr-1 mb-1">经典必游</span>
+                    <span class="bg-yellow-100 text-yellow-600 px-2 py-1 rounded-full text-xs mb-1">美食</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 每日行程 -->
+        <div>
+            <h3 class="text-lg font-semibold mb-3">每日行程</h3>
+            <!-- Day 1 -->
+            <div class="mb-4 pb-4 border-b">
+                <div class="flex justify-between items-center mb-2">
+                    <h4 class="font-medium text-md">Day 1: 故宫深度游</h4>
+                    <span class="text-sm text-gray-500">约8小时</span>
+                </div>
+                <div class="space-y-3">
+                    <div class="flex items-start">
+                        <div class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs mr-3 mt-1 flex-shrink-0">1</div>
+                        <div>
+                            <p class="font-medium">09:00 - 12:00 故宫博物院 (中轴线)</p>
+                            <p class="text-xs text-gray-500">午门进入，参观太和殿、中和殿、保和殿等。</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs mr-3 mt-1 flex-shrink-0">2</div>
+                        <div>
+                            <p class="font-medium">12:00 - 13:00 午餐 (故宫角楼餐厅)</p>
+                            <p class="text-xs text-gray-500">品尝宫廷风味美食。</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs mr-3 mt-1 flex-shrink-0">3</div>
+                        <div>
+                            <p class="font-medium">13:00 - 17:00 故宫博物院 (东西六宫)</p>
+                            <p class="text-xs text-gray-500">珍宝馆、钟表馆及后宫区域。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Day 2 -->
+            <div class="mb-4 pb-4 border-b">
+                <h4 class="font-medium text-md mb-2">Day 2: 长城与颐和园</h4>
+                <div class="space-y-3">
+                    <div class="flex items-start">
+                        <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-xs mr-3 mt-1 flex-shrink-0">1</div>
+                        <div>
+                            <p class="font-medium">08:00 - 12:00 慕田峪长城</p>
+                            <p class="text-xs text-gray-500">风景秀丽，游客相对较少。</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-xs mr-3 mt-1 flex-shrink-0">2</div>
+                        <div>
+                            <p class="font-medium">14:00 - 17:00 颐和园</p>
+                            <p class="text-xs text-gray-500">皇家园林，昆明湖泛舟。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Day 3 -->
+            <div>
+                <h4 class="font-medium text-md mb-2">Day 3: 天坛与胡同文化</h4>
+                <div class="space-y-3">
+                    <div class="flex items-start">
+                        <div class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-white text-xs mr-3 mt-1 flex-shrink-0">1</div>
+                        <div>
+                            <p class="font-medium">09:00 - 11:00 天坛公园</p>
+                            <p class="text-xs text-gray-500">祈年殿、回音壁。</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-white text-xs mr-3 mt-1 flex-shrink-0">2</div>
+                        <div>
+                            <p class="font-medium">13:00 - 16:00 南锣鼓巷/五道营胡同</p>
+                            <p class="text-xs text-gray-500">体验老北京胡同文化，逛特色小店。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部操作按钮 -->
+    <div class="px-4 py-3 bg-white border-t sticky bottom-0 z-10 flex-shrink-0">
+            <div class="flex space-x-3">
+            <button onclick="navigateParentToIndex()" class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium py-3 rounded-lg text-sm">
+                <i class="fas fa-edit mr-1"></i>编辑行程
+            </button>
+            <button class="flex-1 bg-blue-500 hover:bg-blue-600 text-white font-medium py-3 rounded-lg text-sm opacity-50 cursor-not-allowed"> <!-- Save & Navigate, non-functional -->
+                <i class="fas fa-check-circle mr-1"></i>保存并开始导航
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function navigateParentToIndex() {
+            // Reloads the parent (index.html) to show the main overview of all screens
+            if (window.parent) {
+                 window.parent.location.reload();
+            } else {
+                // Fallback if not in an iframe
+                window.location.href = '../index.html'; // Adjust path if necessary
+            }
+        }
+    </script>
+</body>
+</html> 
