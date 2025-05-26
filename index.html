@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>旅行路线规划 App 原型</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .prototype-container {
+            width: 390px; /* iPhone 15 Pro width */
+            height: 844px; /* iPhone 15 Pro height */
+            border-radius: 55px;
+            overflow: hidden;
+            position: relative;
+            background: white;
+            border: 12px solid #1a1a1a;
+        }
+        .status-bar {
+            height: 44px;
+            background-color: #000;
+            color: white;
+            font-size: 14px;
+            padding: 0 16px;
+        }
+        .dynamic-island {
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 126px;
+            height: 37px;
+            background: #000;
+            border-radius: 24px;
+            z-index: 1000;
+        }
+        .screen-container {
+            height: calc(100% - 44px);
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen p-8">
+    <div class="max-w-7xl mx-auto">
+        <h1 class="text-3xl font-bold mb-8">旅行路线规划 App 原型展示</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Home Screen -->
+            <div class="prototype-container shadow-2xl">
+                <div class="dynamic-island"></div>
+                <div class="status-bar flex items-center justify-between">
+                    <span>9:41</span>
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-signal"></i>
+                        <i class="fas fa-wifi"></i>
+                        <i class="fas fa-battery-full"></i>
+                    </div>
+                </div>
+                <div class="screen-container">
+                    <iframe src="screens/home.html" frameborder="0" width="100%" height="100%"></iframe>
+                </div>
+            </div>
+            
+            <!-- Map Planning Screen -->
+            <div class="prototype-container shadow-2xl">
+                <div class="dynamic-island"></div>
+                <div class="status-bar flex items-center justify-between">
+                    <span>9:41</span>
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-signal"></i>
+                        <i class="fas fa-wifi"></i>
+                        <i class="fas fa-battery-full"></i>
+                    </div>
+                </div>
+                <div class="screen-container">
+                    <iframe src="screens/map.html" frameborder="0" width="100%" height="100%"></iframe>
+                </div>
+            </div>
+
+            <!-- My Routes Screen -->
+            <div class="prototype-container shadow-2xl">
+                <div class="dynamic-island"></div>
+                <div class="status-bar flex items-center justify-between">
+                    <span>9:41</span>
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-signal"></i>
+                        <i class="fas fa-wifi"></i>
+                        <i class="fas fa-battery-full"></i>
+                    </div>
+                </div>
+                <div class="screen-container">
+                    <iframe src="screens/routes.html" frameborder="0" width="100%" height="100%"></iframe>
+                </div>
+            </div>
+
+            <!-- Discover Screen -->
+            <div class="prototype-container shadow-2xl">
+                <div class="dynamic-island"></div>
+                <div class="status-bar flex items-center justify-between">
+                    <span>9:41</span>
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-signal"></i>
+                        <i class="fas fa-wifi"></i>
+                        <i class="fas fa-battery-full"></i>
+                    </div>
+                </div>
+                <div class="screen-container">
+                    <iframe src="screens/discover.html" frameborder="0" width="100%" height="100%"></iframe>
+                </div>
+            </div>
+
+            <!-- Profile Screen -->
+            <div class="prototype-container shadow-2xl">
+                <div class="dynamic-island"></div>
+                <div class="status-bar flex items-center justify-between">
+                    <span>9:41</span>
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-signal"></i>
+                        <i class="fas fa-wifi"></i>
+                        <i class="fas fa-battery-full"></i>
+                    </div>
+                </div>
+                <div class="screen-container">
+                    <iframe src="screens/profile.html" target="_parent" frameborder="0" width="100%" height="100%"></iframe>
+                </div>
+            </div>
+
+            <!-- Route Result Screen (Initially empty or with a placeholder) -->
+            <div class="prototype-container shadow-2xl">
+                <div class="dynamic-island"></div>
+                <div class="status-bar flex items-center justify-between">
+                    <span>9:41</span>
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-signal"></i>
+                        <i class="fas fa-wifi"></i>
+                        <i class="fas fa-battery-full"></i>
+                    </div>
+                </div>
+                <div class="screen-container">
+                    <iframe src="screens/route_result.html" target="_parent" frameborder="0" width="100%" height="100%"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
